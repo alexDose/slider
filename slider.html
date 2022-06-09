@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>slider</title>
+	<style>
+		.itk-slider { width: 50%; margin: 0 auto; text-align: center;}
+		img { width: 200px; }
+	</style>
+</head>
+<body>
+	<div class="itk-slider">
+		<button id="show-prev-btn"><</button>
+		<img id="image">
+		<button id="show-next-btn">></button>
+	</div>
+
+	<script>
+		let imageAddress = ["https://www.lamborghini.com/sites/it-en/files/DAM/lamborghini/facelift_2019/homepage/families-gallery/2022/04_12/family_chooser_tecnica_m.png", "https://media.istockphoto.com/photos/generic-red-suv-on-a-white-background-side-view-picture-id1157655660?k=20&m=1157655660&s=612x612&w=0&h=WOtAthbmJ9iG1zbKo4kNUsAGMe6-xM-E7a8TMxb5xmk=", "https://dictionary.cambridge.org/ru/images/thumb/sports_noun_002_35307.jpg?version=5.0.243", "https://www.bmw.com/content/dam/bmw/marketBMWCOM/bmw_com/categories/Design/i4-designelemente/i4de-00-teaser-high.jpg?imwidth=360"];
+		let onButtonPrev = document.getElementById("show-prev-btn");
+		let onButtonNext = document.getElementById("show-next-btn");
+		let ourImage = document.getElementById("image");
+		let i = 0;
+		ourImage.src = imageAddress[i];
+		onButtonPrev.disabled = true;
+
+		onButtonPrev.addEventListener("click", prev);
+		onButtonNext.addEventListener("click", next);
+		
+		function prev() {
+			i--;
+			ourImage.src = imageAddress[i];
+			if(i === 0) {
+			onButtonPrev.disabled = true;	
+			}
+		}
+		function next() {
+			i++;
+			ourImage.src = imageAddress[i];
+			onButtonPrev.disabled = false;
+			if (i === (imageAddress.length - 1)) {
+			onButtonNext.disabled = true;
+			}
+		}
+	</script>
+</body>
+</html>
